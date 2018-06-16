@@ -1,0 +1,348 @@
+body
+{
+	background-color: hsla(210,66%,34%,1);
+}
+
+.clock
+{
+	--size: 100px;
+	--latitude: 0.545;
+}
+.clock
+{
+	position: relative;
+	width: var(--size);
+	height: var(--size);
+	border-radius: 50%;
+}
+
+.hour
+,
+.minute
+,
+.second
+,
+.solarterm
+{
+	position: absolute;
+	top: 50%;
+	bottom: 0%;
+	left: 49%;
+	right: 49%;
+	border-radius: 50%/75% 75% 25% 25%;
+	transform-origin: top;
+}
+
+.hour::before
+,
+.minute::before
+,
+.second::before
+,
+.solarterm::before
+,
+.solarterm::after
+{
+	content: '';
+	display: block;
+	position: absolute;
+	border-radius: 50%/75% 75% 25% 25%;
+}
+
+.hour::before
+{
+	top: 0%;
+	bottom: 40%;
+	left: 0;
+	right: 0;
+}
+.minute::before
+{
+	top: 0%;
+	bottom: 20%;
+	left: 25%;
+	right: 25%;
+}
+.second::before
+{
+	top: 0%;
+	bottom: 8%;
+	left: 30%;
+	right: 30%;
+}
+.solarterm::before
+{
+	top: 44%;
+	bottom: 48%;
+	left: -60%;
+	right: -60%;
+	border: calc(var(--size)/400) solid;
+}
+.solarterm::after
+{
+	top: 43%;
+	bottom: 54%;
+	left: 42%;
+	right: 42%;
+}
+
+.moon
+{
+	--phase: 0;
+	--abs-cos-phase: 1;
+	--sin-phase: 0;
+	--moon-size: calc(var(--size)/20);
+	--moon-position: calc(var(--moon-size)*2);
+	position: absolute;
+	top: calc(50% - var(--moon-size)/2);
+	right: 0;
+	left: 0;
+	margin: auto;
+	height: var(--moon-size);
+	width: calc(var(--moon-size)*var(--abs-cos-phase));
+	border-left: calc(var(--moon-size)*(1 - var(--abs-cos-phase))/2) solid currentColor;
+	border-right: calc(var(--moon-size)*(1 - var(--abs-cos-phase))/2) solid var(--shadow-color);
+	background-color:  var(--shadow-color);
+	border-radius: 50%;
+	transform:  rotate(calc(var(--phase)*1rad)) translateY(calc(-1*var(--moon-position))) rotate(calc(var(--latitude)*var(--sin-phase)*-1rad));
+}
+.moon.open-pupilla
+{
+	background-color: currentColor;
+}
+.moon.open-right
+{
+	border-left-color: var(--shadow-color);
+	border-right-color: currentColor;
+}
+
+.minutes>*
+,
+.hours>*
+,
+.solarterms>*
+,
+.zodiacs>*
+,
+.moon-phases>*
+,
+.moon-phase-titles>*
+,
+.title
+{
+	display: block;
+	position: absolute;
+	bottom: 50%;
+	margin: auto;
+	left: 0;
+	right: 0;
+	width: fit-content;
+	transform-origin: bottom;
+	line-height: 0;
+}
+
+.minutes>*
+{
+	top: 6%;
+	font-size: calc(var(--size)*1/50);
+}
+
+.hours>*
+{
+	top: 18%;
+	font-size: calc(var(--size)*2/50);
+}
+
+.solarterms>*
+{
+	top: 26%;
+	font-size: calc(var(--size)*1/75);
+}
+
+.zodiacs>*
+{
+	top: 30%;
+	font-size: calc(var(--size)*1/50);
+}
+.zodiacs>*::after
+{
+	content: '';
+	display: block;
+	position: absolute;
+	top: calc(var(--size)/-40);
+	left: calc(-1*var(--size));
+	right: calc(-1*var(--size));
+	margin: auto;
+	width: calc(var(--size)*0.105);
+	height: calc(var(--size)/20);
+	border-bottom: calc(var(--size)/1000) solid;
+	border-radius: 50%;
+}
+
+.moon-phases>*
+{
+	top: 38%;
+	font-size: calc(var(--size)/100);
+}
+.moon-phase-titles>*
+{
+	top: 36.5%;
+	font-size: calc(var(--size)*4/300);
+}
+.title
+{
+	top: 42%;
+	font-size: calc(var(--size)*4/100);
+}
+
+.stars>*
+{
+	position: absolute;
+	width: calc(var(--size)/200);
+	height: calc(var(--size)/200);
+	margin: calc(var(--size)/-400);
+	border-radius: 50%;
+	background-clip: content-box;
+}
+.stars>:nth-child(1)
+{
+	top: 12.7%;
+	left: 37.38%;
+}
+.stars>:nth-child(2)
+{
+	top: 10.2%;
+	left: 43.2%;
+}
+.stars>:nth-child(3)
+{
+	top: 11.4%;
+	left: 47.25%;
+}
+.stars>:nth-child(4)
+{
+	top: 12.9%;
+	left: 52.58%;
+}
+.stars>:nth-child(5)
+{
+	top: 17.45%;
+	left: 54.25%;
+}
+.stars>:nth-child(6)
+{
+	top: 16.1%;
+	left: 61.9%;
+}
+.stars>:nth-child(7)
+{
+	top: 10.5%;
+	left: 62.2%;
+}
+.stars>.actived
+{
+	padding: calc(var(--size)/400);
+	border: calc(var(--size)/400) solid;
+	margin: calc(var(--size)*3/-400);
+}
+
+
+.clock
+{
+	background-image: -webkit-linear-gradient(top, hsla(219,100%,64%,1) 0%, hsla(161,75%,76%,1) 50%, hsla(210,66%,35%,1) 50%, hsla(235,100%,6%,1) 100%);
+}
+.hour::before
+{
+	background-color: hsla(0,0%,100%,1);
+	box-shadow: 0 0 18px hsla(0,0%,0%,0.2), 0 0 1px 1px hsla(0,0%,0%,0.1);
+}
+.minute::before
+{
+	background-color: hsla(0,0%,100%,1);
+	box-shadow: 0 0 18px hsla(0,0%,0%,0.2), 0 0 1px 1px hsla(0,0%,0%,0.1);
+}
+.second::before
+{
+	background-color: hsla(0,100%,75%,1);
+	box-shadow: 0 0 18px hsla(0,0%,0%,0.2), 0 0 1px 1px hsla(0,0%,0%,0.1);
+}
+.solarterm::before
+{
+	border-color: hsla(0,100%,100%,1);
+	box-shadow: inset 0 0 2px hsla(0,0%,100%,1), inset 0 0 4px hsla(0,0%,100%,1), 0 0 4px hsla(0,0%,100%,1), 0 0 2px hsla(0,0%,100%,1);
+}
+.solarterm::after
+{
+	background-color: hsla(0,100%,100%,1);
+	box-shadow: 0 0 4px hsla(0,0%,100%,1), 0 0 2px hsla(0,0%,100%,1);
+}
+.moon
+{
+	color: white;
+	--shadow-color: hsla(0,0%,25%,1);
+}
+.minutes>*
+{
+	color: hsla(0,0%,100%,1);
+	text-shadow: 0 2px 4px hsla(0,0%,0%,0.3);
+}
+.hours>*
+{
+	color: hsla(0,0%,100%,1);
+	text-shadow: 0 2px 8px hsla(0,0%,0%,0.4);
+}
+.solarterms>*
+{
+	color: hsla(0,0%,100%,1);
+	text-shadow: 0 2px 8px hsla(0,0%,0%,0.2);
+}
+.zodiacs>*
+{
+	color: hsla(0,0%,100%,1);
+	text-shadow: 0 2px 8px hsla(0,0%,0%,0.2);
+}
+.zodiacs>*::after
+{
+	border-color: hsla(0,0%,100%,1);
+}
+.moon-phases>*
+,
+.moon-phase-titles>*
+{
+	color: hsla(0,0%,100%,1);
+	text-shadow: 0 2px 8px hsla(0,0%,0%,0.2);
+}
+.title
+{
+	color: hsla(0,0%,100%,1);
+	text-shadow: 0 2px 8px hsla(0,0%,0%,0.2);
+	font-family: 'Operator Mono';
+}
+.stars>*
+{
+	background-color: hsla(0,0%,100%,1);
+	box-shadow: 0 0 calc(var(--size)/400) hsla(0,0%,100%,1);
+}
+.stars>.actived
+{
+	background-color: hsla(0,0%,100%,1);
+	border-color: hsla(0,0%,100%,1);
+	box-shadow: 0 0 calc(var(--size)/400) hsla(0,0%,100%,1),inset 0 0 calc(var(--size)/400) hsla(0,0%,100%,1);
+}
+
+.clock
+{
+	--size: 40vw;
+	margin: 10vw auto;
+}
+.clock
+{
+	--size: 96vmin;
+	position: fixed;
+	z-index: 8;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
